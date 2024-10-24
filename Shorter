@@ -1,0 +1,25 @@
+# A function to check if two sets are equinumerous by checking for a bijection
+def is_bijective(setA, setB):
+    if len(setA) != len(setB):
+        return False
+    # Bijection exists if each element in setA maps to a unique element in setB
+    mapping = {}
+    for a in setA:
+        if a in mapping:
+            continue
+        b = setB.pop()
+        mapping[a] = b
+    
+    # If there's a one-to-one correspondence
+    return len(mapping) == len(setA)
+
+# Example sets
+setA = {1, 2, 3, 4}
+setB = {5, 6, 7, 8}
+
+# Check if there's a bijection
+if is_bijective(setA, setB):
+    print("The two sets are equinumerous (bijective).")
+else:
+    print("The two sets are not bijective.")
+
